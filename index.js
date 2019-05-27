@@ -21,8 +21,6 @@ function logDriversByHometown(drivers, hometown) {
     }
 })}
 
-// revs
-
 // const revenueSorter = function (a, b) {
 //   if (a.revenue < b.revenue){
 //     return -1
@@ -42,24 +40,37 @@ function logDriversByHometown(drivers, hometown) {
 //   return sortedDrivers.sort(revenueSorter)
 // }
 
+// function driversByRevenue(array) {
+//    const sortedDrivers = [ ...array]
+//    sortedDrivers.sort(function (a, b) {
+//       return a.revenue - b.revenue
+//    })
+//
+//    return sortedDrivers
+// }
 
 function driversByRevenue(drivers) {
    const sortedDrivers = [ ...drivers]
-   sortedDrivers.sort(function (a, b) {
+   return sortedDrivers.sort(function (a, b) {
       return a.revenue - b.revenue
    })
-
-   return sortedDrivers
 }
-
-// names
-
-const alphaSorter = function (a, b) {
-  console.log(a.localeCompare(b));
-}
-
 
 function driversByName(drivers) {
   const sortedDrivers = [ ...drivers]
-  return sortedDrivers.sort(alphaSorter)
+  return sortedDrivers.sort(function (a,b) {
+    return a.name.localeCompare(b.name)
+  })
+}
+
+const reduceDriverRev = function (agg, el, i, arr) {
+  return agg + el.revenue
+}
+
+const totalRevenue = function totalRevenue(drivers) {
+  return drivers.reduce(reduceDriverRev, 0)
+}
+
+function averageRevenue(drivers) {
+  return totalRevenue(drivers) / drivers.length
 }
