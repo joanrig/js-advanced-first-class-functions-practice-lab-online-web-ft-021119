@@ -20,3 +20,46 @@ function logDriversByHometown(drivers, hometown) {
     console.log(driver.name)
     }
 })}
+
+// revs
+
+// const revenueSorter = function (a, b) {
+//   if (a.revenue < b.revenue){
+//     return -1
+//   }
+//
+//   if (a.revenue > b.revenue){
+//     return 1
+//   }
+//
+//   if (a.revenue = b.revenue){
+//     return 0
+//   }
+// }
+//
+// function driversByRevenue(drivers) {
+//   const sortedDrivers = [ ...drivers]
+//   return sortedDrivers.sort(revenueSorter)
+// }
+
+
+function driversByRevenue(drivers) {
+   const sortedDrivers = [ ...drivers]
+   sortedDrivers.sort(function (a, b) {
+      return a.revenue - b.revenue
+   })
+
+   return sortedDrivers
+}
+
+// names
+
+const alphaSorter = function (a, b) {
+  console.log(a.localeCompare(b));
+}
+
+
+function driversByName(drivers) {
+  const sortedDrivers = [ ...drivers]
+  return sortedDrivers.sort(alphaSorter)
+}
